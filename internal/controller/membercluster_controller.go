@@ -31,30 +31,30 @@ import (
 	"lab.nardis.io/kontinuum/pkg/providers"
 )
 
-// HubClusterReconciler reconciles a HubCluster object
-type HubClusterReconciler struct {
+// MemberClusterReconciler reconciles a MemberCluster object
+type MemberClusterReconciler struct {
 	client.Client
 	Scheme *runtime.Scheme
 }
 
-// +kubebuilder:rbac:groups=kontinuum.nardis.io,resources=hubclusters,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=kontinuum.nardis.io,resources=hubclusters/status,verbs=get;update;patch
-// +kubebuilder:rbac:groups=kontinuum.nardis.io,resources=hubclusters/finalizers,verbs=update
+// +kubebuilder:rbac:groups=kontinuum.nardis.io,resources=MemberClusters,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=kontinuum.nardis.io,resources=MemberClusters/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=kontinuum.nardis.io,resources=MemberClusters/finalizers,verbs=update
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.
 // TODO(user): Modify the Reconcile function to compare the state specified by
-// the HubCluster object against the actual cluster state, and then
+// the MemberCluster object against the actual cluster state, and then
 // perform operations to make the cluster state reflect the state specified by
 // the user.
 //
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.20.0/pkg/reconcile
-func (r *HubClusterReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
+func (r *MemberClusterReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	logger := log.FromContext(ctx)
 
 	// Get the RemoteCluster resource
-	var remoteCluster v1alpha1.HubCluster
+	var remoteCluster v1alpha1.MemberCluster
 	if err := r.Get(ctx, req.NamespacedName, &remoteCluster); err != nil {
 		return ctrl.Result{}, client.IgnoreNotFound(err)
 	}
@@ -91,9 +91,9 @@ func (r *HubClusterReconciler) Reconcile(ctx context.Context, req ctrl.Request) 
 }
 
 // SetupWithManager sets up the controller with the Manager.
-func (r *HubClusterReconciler) SetupWithManager(mgr ctrl.Manager) error {
+func (r *MemberClusterReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
-		For(&kontinuumv1alpha1.HubCluster{}).
-		Named("hubcluster").
+		For(&kontinuumv1alpha1.MemberCluster{}).
+		Named("MemberCluster").
 		Complete(r)
 }

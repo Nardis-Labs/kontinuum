@@ -31,7 +31,7 @@ package providers
 // 	}, nil
 // }
 
-// func (a *AKSClient) VerifyClusterConnection(ctx context.Context, spec v1alpha1.HubClusterSpec) (bool, error) {
+// func (a *AKSClient) VerifyClusterConnection(ctx context.Context, spec v1alpha1.MemberClusterSpec) (bool, error) {
 // 	// Parse credentials from spec
 // 	var creds struct {
 // 		SubscriptionID string `json:"subscriptionId"`
@@ -50,7 +50,7 @@ package providers
 // 	return result.Properties.ProvisioningState != nil && *result.Properties.ProvisioningState == "Succeeded", nil
 // }
 
-// func (a *AKSClient) GetKubeconfig(ctx context.Context, spec v1alpha1.HubClusterSpec) (string, error) {
+// func (a *AKSClient) GetKubeconfig(ctx context.Context, spec v1alpha1.MemberClusterSpec) (string, error) {
 // 	var creds struct {
 // 		SubscriptionID string `json:"subscriptionId"`
 // 		ResourceGroup  string `json:"resourceGroup"`
@@ -72,7 +72,7 @@ package providers
 // 	return string(credential.Kubeconfigs[0].Value), nil
 // }
 
-// func (a *AKSClient) GetClusterInfo(ctx context.Context, spec v1alpha1.HubClusterSpec) (*ClusterInfo, error) {
+// func (a *AKSClient) GetClusterInfo(ctx context.Context, spec v1alpha1.MemberClusterSpec) (*ClusterInfo, error) {
 // 	var creds struct {
 // 		SubscriptionID string `json:"subscriptionId"`
 // 		ResourceGroup  string `json:"resourceGroup"`

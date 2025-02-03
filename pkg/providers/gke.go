@@ -28,7 +28,7 @@ package providers
 // }
 
 // // parseGKECredentials parses the credentials from the RemoteCluster spec
-// func parseGKECredentials(spec v1alpha1.HubClusterSpec) (projectID string, location string, err error) {
+// func parseGKECredentials(spec v1alpha1.MemberClusterSpec) (projectID string, location string, err error) {
 // 	var creds struct {
 // 		ProjectID string `json:"projectId"`
 // 		Location  string `json:"location"` // Can be a zone or region
@@ -45,7 +45,7 @@ package providers
 // 	return creds.ProjectID, creds.Location, nil
 // }
 
-// func (g *GKEClient) VerifyClusterConnection(ctx context.Context, spec v1alpha1.HubClusterSpec) (bool, error) {
+// func (g *GKEClient) VerifyClusterConnection(ctx context.Context, spec v1alpha1.MemberClusterSpec) (bool, error) {
 // 	projectID, location, err := parseGKECredentials(spec)
 // 	if err != nil {
 // 		return false, err
@@ -65,7 +65,7 @@ package providers
 // 	return cluster.Status == containerpb.Cluster_RUNNING, nil
 // }
 
-// func (g *GKEClient) GetKubeconfig(ctx context.Context, spec v1alpha1.HubClusterSpec) (string, error) {
+// func (g *GKEClient) GetKubeconfig(ctx context.Context, spec v1alpha1.MemberClusterSpec) (string, error) {
 // 	projectID, location, err := parseGKECredentials(spec)
 // 	if err != nil {
 // 		return "", err
@@ -124,7 +124,7 @@ package providers
 // 	return string(kubeconfigBytes), nil
 // }
 
-// func (g *GKEClient) GetClusterInfo(ctx context.Context, spec v1alpha1.HubClusterSpec) (*ClusterInfo, error) {
+// func (g *GKEClient) GetClusterInfo(ctx context.Context, spec v1alpha1.MemberClusterSpec) (*ClusterInfo, error) {
 // 	projectID, location, err := parseGKECredentials(spec)
 // 	if err != nil {
 // 		return nil, err

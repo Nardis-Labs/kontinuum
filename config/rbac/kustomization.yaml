@@ -28,7 +28,7 @@ resources:
 - workload_admin_role.yaml
 - workload_editor_role.yaml
 - workload_viewer_role.yaml
-- hubcluster_admin_role.yaml
-- hubcluster_editor_role.yaml
-- hubcluster_viewer_role.yaml
+- membercluster_admin_role.yaml
+- membercluster_editor_role.yaml
+- membercluster_viewer_role.yaml
 

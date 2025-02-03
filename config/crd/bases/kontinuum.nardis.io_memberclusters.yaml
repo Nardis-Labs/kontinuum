@@ -4,20 +4,20 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.17.1
-  name: hubclusters.kontinuum.nardis.io
+  name: memberclusters.kontinuum.nardis.io
 spec:
   group: kontinuum.nardis.io
   names:
-    kind: HubCluster
-    listKind: HubClusterList
-    plural: hubclusters
-    singular: hubcluster
+    kind: MemberCluster
+    listKind: MemberClusterList
+    plural: memberclusters
+    singular: membercluster
   scope: Namespaced
   versions:
   - name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: HubCluster is the Schema for the hubclusters API.
+        description: MemberCluster is the Schema for the MemberClusters API.
         properties:
           apiVersion:
             description: |-
@@ -37,7 +37,7 @@ spec:
           metadata:
             type: object
           spec:
-            description: HubClusterSpec defines the desired state of HubCluster.
+            description: MemberClusterSpec defines the desired state of MemberCluster.
             properties:
               clusterName:
                 description: ClusterName is the name of the remote cluster in the
@@ -68,7 +68,7 @@ spec:
             - region
             type: object
           status:
-            description: HubClusterStatus defines the observed state of HubCluster.
+            description: MemberClusterStatus defines the observed state of MemberCluster.
             properties:
               connected:
                 description: Connected indicates if the hub can communicate with the

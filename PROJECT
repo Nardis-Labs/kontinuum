@@ -14,7 +14,7 @@ resources:
   controller: true
   domain: nardis.io
   group: kontinuum
-  kind: HubCluster
+  kind: MemberCluster
   path: lab.nardis.io/kontinuum/api/v1alpha1
   version: v1alpha1
 - api:

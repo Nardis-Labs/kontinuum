@@ -1,9 +1,9 @@
 apiVersion: kontinuum.nardis.io/v1alpha1
-kind: HubCluster
+kind: MemberCluster
 metadata:
   labels:
     app.kubernetes.io/name: kontinuum
     app.kubernetes.io/managed-by: kustomize
-  name: hubcluster-sample
+  name: MemberCluster-sample
 spec:
   # TODO(user): Add fields here

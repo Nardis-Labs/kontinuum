@@ -30,7 +30,7 @@ import (
 	kontinuumv1alpha1 "lab.nardis.io/kontinuum/api/v1alpha1"
 )
 
-var _ = Describe("HubCluster Controller", func() {
+var _ = Describe("MemberCluster Controller", func() {
 	Context("When reconciling a resource", func() {
 		const resourceName = "test-resource"
 
@@ -40,13 +40,13 @@ var _ = Describe("HubCluster Controller", func() {
 			Name:      resourceName,
 			Namespace: "default", // TODO(user):Modify as needed
 		}
-		hubcluster := &kontinuumv1alpha1.HubCluster{}
+		MemberCluster := &kontinuumv1alpha1.MemberCluster{}
 
 		BeforeEach(func() {
-			By("creating the custom resource for the Kind HubCluster")
-			err := k8sClient.Get(ctx, typeNamespacedName, hubcluster)
+			By("creating the custom resource for the Kind MemberCluster")
+			err := k8sClient.Get(ctx, typeNamespacedName, MemberCluster)
 			if err != nil && errors.IsNotFound(err) {
-				resource := &kontinuumv1alpha1.HubCluster{
+				resource := &kontinuumv1alpha1.MemberCluster{
 					ObjectMeta: metav1.ObjectMeta{
 						Name:      resourceName,
 						Namespace: "default",
@@ -59,16 +59,16 @@ var _ = Describe("HubCluster Controller", func() {
 
 		AfterEach(func() {
 			// TODO(user): Cleanup logic after each test, like removing the resource instance.
-			resource := &kontinuumv1alpha1.HubCluster{}
+			resource := &kontinuumv1alpha1.MemberCluster{}
 			err := k8sClient.Get(ctx, typeNamespacedName, resource)
 			Expect(err).NotTo(HaveOccurred())
 
-			By("Cleanup the specific resource instance HubCluster")
+			By("Cleanup the specific resource instance MemberCluster")
 			Expect(k8sClient.Delete(ctx, resource)).To(Succeed())
 		})
 		It("should successfully reconcile the resource", func() {
 			By("Reconciling the created resource")
-			controllerReconciler := &HubClusterReconciler{
+			controllerReconciler := &MemberClusterReconciler{
 				Client: k8sClient,
 				Scheme: k8sClient.Scheme(),
 			}

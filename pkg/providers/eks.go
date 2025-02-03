@@ -32,7 +32,7 @@ func NewEKSClient() (*EKSClient, error) {
 	}, nil
 }
 
-func (e *EKSClient) VerifyClusterConnection(ctx context.Context, spec v1alpha1.HubClusterSpec) (bool, error) {
+func (e *EKSClient) VerifyClusterConnection(ctx context.Context, spec v1alpha1.MemberClusterSpec) (bool, error) {
 	var result *eks.DescribeClusterOutput
 
 	op := func(ctx context.Context) error {
@@ -57,7 +57,7 @@ func (e *EKSClient) VerifyClusterConnection(ctx context.Context, spec v1alpha1.H
 	return result.Cluster.Status == "ACTIVE", nil
 }
 
-func (e *EKSClient) GetKubeconfig(ctx context.Context, spec v1alpha1.HubClusterSpec) (string, error) {
+func (e *EKSClient) GetKubeconfig(ctx context.Context, spec v1alpha1.MemberClusterSpec) (string, error) {
 	var result *eks.DescribeClusterOutput
 
 	op := func(ctx context.Context) error {
@@ -89,7 +89,7 @@ func (e *EKSClient) GetKubeconfig(ctx context.Context, spec v1alpha1.HubClusterS
 	return kubeconfig, nil
 }
 
-func (e *EKSClient) GetClusterInfo(ctx context.Context, spec v1alpha1.HubClusterSpec) (*ClusterInfo, error) {
+func (e *EKSClient) GetClusterInfo(ctx context.Context, spec v1alpha1.MemberClusterSpec) (*ClusterInfo, error) {
 	var cluster *eks.DescribeClusterOutput
 	var nodeGroups *eks.ListNodegroupsOutput
 

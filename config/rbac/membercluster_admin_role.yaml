@@ -11,17 +11,17 @@ metadata:
   labels:
     app.kubernetes.io/name: kontinuum
     app.kubernetes.io/managed-by: kustomize
-  name: hubcluster-admin-role
+  name: MemberCluster-admin-role
 rules:
 - apiGroups:
   - kontinuum.nardis.io
   resources:
-  - hubclusters
+  - MemberClusters
   verbs:
   - '*'
 - apiGroups:
   - kontinuum.nardis.io
   resources:
-  - hubclusters/status
+  - MemberClusters/status
   verbs:
   - get

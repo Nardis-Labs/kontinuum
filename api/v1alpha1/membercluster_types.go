@@ -28,8 +28,8 @@ const (
 	ProviderGKE CloudProvider = "GKE"
 )
 
-// HubClusterSpec defines the desired state of HubCluster.
-type HubClusterSpec struct {
+// MemberClusterSpec defines the desired state of MemberCluster.
+type MemberClusterSpec struct {
 	// Provider is the cloud provider of the remote cluster
 	Provider CloudProvider `json:"provider"`
 
@@ -43,8 +43,8 @@ type HubClusterSpec struct {
 	ClusterName string `json:"clusterName"`
 }
 
-// HubClusterStatus defines the observed state of HubCluster.
-type HubClusterStatus struct {
+// MemberClusterStatus defines the observed state of MemberCluster.
+type MemberClusterStatus struct {
 	// Connected indicates if the hub can communicate with the remote cluster
 	Connected bool `json:"connected"`
 
@@ -63,24 +63,24 @@ type SecretReference struct {
 // +kubebuilder:object:root=true
 // +kubebuilder:subresource:status
 
-// HubCluster is the Schema for the hubclusters API.
-type HubCluster struct {
+// MemberCluster is the Schema for the MemberClusters API.
+type MemberCluster struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   HubClusterSpec   `json:"spec,omitempty"`
-	Status HubClusterStatus `json:"status,omitempty"`
+	Spec   MemberClusterSpec   `json:"spec,omitempty"`
+	Status MemberClusterStatus `json:"status,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
-// HubClusterList contains a list of HubCluster.
-type HubClusterList struct {
+// MemberClusterList contains a list of MemberCluster.
+type MemberClusterList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []HubCluster `json:"items"`
+	Items           []MemberCluster `json:"items"`
 }
 
 func init() {
-	SchemeBuilder.Register(&HubCluster{}, &HubClusterList{})
+	SchemeBuilder.Register(&MemberCluster{}, &MemberClusterList{})
 }

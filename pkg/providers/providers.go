@@ -10,13 +10,13 @@ import (
 // CloudProviderClient defines the interface that all cloud providers must implement
 type CloudProviderClient interface {
 	// VerifyClusterConnection checks if the cluster is accessible
-	VerifyClusterConnection(ctx context.Context, spec v1alpha1.HubClusterSpec) (bool, error)
+	VerifyClusterConnection(ctx context.Context, spec v1alpha1.MemberClusterSpec) (bool, error)
 
 	// GetKubeconfig retrieves the kubeconfig for the remote cluster
-	GetKubeconfig(ctx context.Context, spec v1alpha1.HubClusterSpec) (string, error)
+	GetKubeconfig(ctx context.Context, spec v1alpha1.MemberClusterSpec) (string, error)
 
 	// GetClusterInfo retrieves information about the cluster
-	GetClusterInfo(ctx context.Context, spec v1alpha1.HubClusterSpec) (*ClusterInfo, error)
+	GetClusterInfo(ctx context.Context, spec v1alpha1.MemberClusterSpec) (*ClusterInfo, error)
 }
 
 // ClusterInfo contains common cluster information
