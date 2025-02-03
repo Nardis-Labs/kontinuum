@@ -1,5 +1,5 @@
 # kontinuum
-A multi-cloud workload orechestrator for kubernetes. 
+A multi-cloud workload orchestrator for kubernetes. 
 
 ## Description
 Kontinuum is a WIP project in its early stages of development. Kontinuum is partly inspired by [AKS Fleet](https://learn.microsoft.com/en-us/azure/kubernetes-fleet/overview). It is a
