@@ -1,0 +1,38 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: manager-role
+rules:
+- apiGroups:
+  - kontinuum.nardis.io
+  resources:
+  - applications
+  - hubclusters
+  - workloads
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - kontinuum.nardis.io
+  resources:
+  - applications/finalizers
+  - hubclusters/finalizers
+  - workloads/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - kontinuum.nardis.io
+  resources:
+  - applications/status
+  - hubclusters/status
+  - workloads/status
+  verbs:
+  - get
+  - patch
+  - update
