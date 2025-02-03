@@ -6,6 +6,8 @@ Kontinuum is a WIP project in its early stages of development. Kontinuum is part
 workload orchestrator for kubernetes that enables engineering teams to utilize a hub cluster to define, deploy and
 manage their kubernetes workloads in a multi-member-cluster, multi-cloud environment. 
 
+The operator plans to support EKS cluster workload orchestration first. Development of GKE and AKS cluster orchestration is also planned. 
+
 ## Getting Started
 
 ### Prerequisites
