@@ -7,8 +7,7 @@ rules:
 - apiGroups:
   - kontinuum.nardis.io
   resources:
-  - memberclusters
-  - applications
+  - MemberClusters
   - workloads
   verbs:
   - create
@@ -21,16 +20,14 @@ rules:
 - apiGroups:
   - kontinuum.nardis.io
   resources:
-  - memberclusters/finalizers
-  - applications/finalizers
+  - MemberClusters/finalizers
   - workloads/finalizers
   verbs:
   - update
 - apiGroups:
   - kontinuum.nardis.io
   resources:
-  - memberclusters/status
-  - applications/status
+  - MemberClusters/status
   - workloads/status
   verbs:
   - get

@@ -17,6 +17,12 @@ type CloudProviderClient interface {
 
 	// GetClusterInfo retrieves information about the cluster
 	GetClusterInfo(ctx context.Context, spec v1alpha1.MemberClusterSpec) (*ClusterInfo, error)
+
+	// DeployHelmChart deploys a Helm chart to the cluster
+	DeployHelmChart(ctx context.Context, appSpec *v1alpha1.Application, spec *v1alpha1.MemberCluster) error
+
+	// DeployKustomizeManifests deploys a set of kustomized manifests to the cluster
+	DeployKustomizeManifests(ctx context.Context, appSpec *v1alpha1.Application, spec *v1alpha1.MemberCluster) error
 }
 
 // ClusterInfo contains common cluster information

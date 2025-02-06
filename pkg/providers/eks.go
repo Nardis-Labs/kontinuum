@@ -163,6 +163,15 @@ func (e *EKSClient) GetClusterInfo(ctx context.Context, spec v1alpha1.MemberClus
 	return info, nil
 }
 
+// TODO: implement FluxCD wrapper
+func (e *EKSClient) DeployHelmChart(ctx context.Context, appSpec *v1alpha1.Application, spec *v1alpha1.MemberCluster) error {
+	return fmt.Errorf("not implemented")
+}
+
+func (e *EKSClient) DeployKustomizeManifests(ctx context.Context, appSpec *v1alpha1.Application, spec *v1alpha1.MemberCluster) error {
+	return fmt.Errorf("not implemented")
+}
+
 // generateEKSKubeconfig generates a kubeconfig for the EKS cluster.
 func generateEKSKubeconfig(clusterName, endpoint, caData string) string {
 	return fmt.Sprintf(`

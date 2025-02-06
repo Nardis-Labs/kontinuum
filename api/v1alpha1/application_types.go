@@ -25,17 +25,48 @@ import (
 
 // ApplicationSpec defines the desired state of Application.
 type ApplicationSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	// Source defines where to get the application manifests from
+	Source ApplicationSource `json:"source"`
 
-	// Foo is an example field of Application. Edit application_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// TargetClusters defines which clusters to deploy to
+	TargetCluster string `json:"targetClusters"`
+
+	// TargetNamespace defines the namespace to deploy the application to
+	TargetNamespace string `json:"targetNamespace"`
+
+	// Chart defines the name of the Helm chart if using Helm
+	Chart ApplicationChartSource `json:"chart,omitempty"`
+
+	// Values for helm charts (if using helm)
+	Values map[string]string `json:"values,omitempty"`
+}
+
+// ApplicationSource defines where to get the application manifests from
+type ApplicationSource struct {
+	// Type is either "helm" or "kustomize"
+	Type string `json:"type"`
+
+	// Path to the chart/manifests
+	Path string `json:"path"`
+
+	// Repository URL
+	RepoURL string `json:"repoUrl"`
+
+	// Version/tag to use
+	Version string `json:"version"`
+}
+
+// ApplicationChartSource defines the Helm chart details
+type ApplicationChartSource struct {
+	// Repository URL
+	Repository string `json:"repository"`
+
+	// Name of the repository
+	RepoName string `json:"repoName"`
 }
 
 // ApplicationStatus defines the observed state of Application.
 type ApplicationStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
 }
 
 // +kubebuilder:object:root=true
